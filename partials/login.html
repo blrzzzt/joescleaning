@@ -1,0 +1,41 @@
+<h2>Login Page</h2>
+
+<div class="btn-group">
+        <label class="btn btn-success" ng-click="selectAuth(auth);" ng-model="$parent.auths" ng-repeat="auth in auths" uncheckable>{{auth}}</label>
+    </div>
+
+<div ng-switch="selectedAuth">
+    <!-- Google Auth -->
+    <div ng-switch-when="Google">
+    
+    <a href="#/login" ng-click="runGoogle()" class="zocial googleplus">Sign in with Google+</a>
+        
+    </div>
+   
+    <!-- Facebook Auth -->
+    <div ng-switch-when="Facebook">Facebook</div>
+    
+    <!-- Email Auth -->
+    <div ng-switch-when="Email">
+    <form>
+    <label>
+        <span>email</span>
+        <input type="text" ng-model="email" />
+    </label>
+    <label>
+        <span>password</span>
+        <input type="password" ng-model="pass" />
+    </label>
+    <label ng-cloak ng-show="createMode">
+        <span>confirm pass</span>
+        <input type="password" ng-model="confirm" />
+    </label>
+    <button ng-click="login()" ng-hide="createMode">Log In</button>
+    <button ng-click="createMode = true" ng-hide="createMode">Register</button>
+    <button ng-cloak ng-show="createMode" ng-click="createAccount()">Create Account</button>
+    <button ng-cloak ng-show="createMode" ng-click="createMode = false">Cancel</button>
+
+    <p ng-show="err" class="error">{{err}}</p>
+</form>
+</div>
+</div>
